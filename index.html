@@ -473,58 +473,45 @@
     <p>&copy; 2025 Lavanderia Andreluc. Todos os direitos reservados.</p>
     <p>Desenvolvido por Blown Agency</p>
   </footer>
-
-    <script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.querySelector("header");
       const menuToggle = document.querySelector('.menu-toggle');
       const navbar = document.querySelector('.navbar');
       const navLinks = document.querySelectorAll('.nav-links a');
-    
+  
+      let lastScrollTop = 0;
+  
+      // Efeito esconder/mostrar header
+      window.addEventListener("scroll", function () {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  
+        if (scrollTop > lastScrollTop) {
+          header.classList.add("hide"); // scroll para baixo
+        } else {
+          header.classList.remove("hide"); // scroll para cima
+        }
+  
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      });
+  
+      // Menu sanduíche abre/fecha
       menuToggle.addEventListener('click', () => {
         navbar.classList.toggle('open');
       });
-    
-      // Fechar menu ao clicar em qualquer link
+  
+      // Fechar menu ao clicar nos links
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           navbar.classList.remove('open');
         });
       });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const header = document.querySelector("header");
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navbar = document.querySelector('.navbar');
-        const navLinks = document.querySelectorAll('.nav-links a');
+    });
+  </script>
     
-        let lastScrollTop = 0;
+   
     
-        // Efeito esconder/mostrar header
-        window.addEventListener("scroll", function () {
-          const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    
-          if (scrollTop > lastScrollTop) {
-            header.classList.add("hide"); // scroll para baixo
-          } else {
-            header.classList.remove("hide"); // scroll para cima
-          }
-    
-          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-    
-        // Menu sanduíche abre/fecha
-        menuToggle.addEventListener('click', () => {
-          navbar.classList.toggle('open');
-        });
-    
-        // Fechar menu ao clicar nos links
-        navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            navbar.classList.remove('open');
-          });
-        });
-      });
-    </script>
+      
     
     </body>
     </html>
