@@ -474,6 +474,22 @@
     <p>Desenvolvido por Blown Agency</p>
   </footer>
   <script>
+    document.addEventListener("click", function (event) {
+      const navbar = document.querySelector('.navbar');
+      const menuToggle = document.querySelector('.menu-toggle');
+  
+      // Se o menu estiver aberto e o clique for fora do menu e do botão
+      if (
+        navbar.classList.contains('open') &&
+        !navbar.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
+        navbar.classList.remove('open');
+      }
+    });
+  </script>
+  
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       const header = document.querySelector("header");
       const menuToggle = document.querySelector('.menu-toggle');
